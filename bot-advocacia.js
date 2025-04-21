@@ -15,6 +15,8 @@ async function salvarAgendamento(agendamento) {
     agendamentos.push(agendamento);
     fs.writeFileSync(ARQUIVO_AGENDAMENTOS, JSON.stringify(agendamentos, null, 2));
 }
+const qrcode = require('qrcode-terminal');
+
 
 async function startBot() {
     const { state, saveCreds } = await useMultiFileAuthState('auth_info');
@@ -145,6 +147,11 @@ Entraremos em contato para confirmar a consulta.`
 
     sock.ev.on('connection.update', (update) => {
         const { connection, lastDisconnect } = update;
+        if (update.qr) {
+            console.log("🔐 Escaneie o QR Code abaixo:");
+            qrcode.generate(update.qr, { small: true });
+        }
+        
         if (connection === 'close') {
             const shouldReconnect = (lastDisconnect.error = new Boom(lastDisconnect?.error))?.output?.statusCode !== DisconnectReason.loggedOut;
             console.log('Conexão encerrada. Reconectando:', shouldReconnect);
