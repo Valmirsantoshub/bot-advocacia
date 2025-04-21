@@ -159,7 +159,11 @@ Entraremos em contato para confirmar a consulta.`
         } else if (connection === 'open') {
             console.log('✅ Bot conectado ao WhatsApp!');
         }
-        const express = require('express');
+        // Inicia o bot normalmente
+startBot();
+
+// Adiciona servidor Express apenas para manter Railway ativo
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
