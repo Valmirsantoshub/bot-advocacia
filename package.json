@@ -3,12 +3,10 @@
     "version": "1.0.0",
     "main": "bot-advocacia.js",
     "scripts": {
-      "start": "node bot-advocacia.js"
+        "start": "node bot-advocacia.js"
     },
     "dependencies": {
-      "@hapi/boom": "^10.0.1",
-      "@whiskeysockets/baileys": "^6.7.1"
+        "@hapi/boom": "^10.0.1",
+        "@whiskeysockets/baileys": "^6.17.16"
     }
-  }
-  
-  
+}
