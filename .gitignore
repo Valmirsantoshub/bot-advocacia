@@ -1,5 +1,6 @@
 # auth_info/
 auth_info/
-
+agendamentos.json
+.env
 node_modules/
 
