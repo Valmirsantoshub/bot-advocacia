@@ -9,6 +9,8 @@ const ARQUIVO_AGENDAMENTOS = path.join(__dirname, 'agendamentos.json');
 if (!fs.existsSync(ARQUIVO_AGENDAMENTOS)) {
     fs.writeFileSync(ARQUIVO_AGENDAMENTOS, JSON.stringify([]));
 }
+// Forçando novo deploy no Railway
+
 
 async function salvarAgendamento(agendamento) {
     const agendamentos = JSON.parse(fs.readFileSync(ARQUIVO_AGENDAMENTOS));
