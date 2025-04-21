@@ -1,13 +1,14 @@
 {
     "name": "bot-advocacia",
     "version": "1.0.0",
-    "main": "index.js",
+    "main": "bot-advocacia.js",
     "scripts": {
-      "start": "node index.js"
+      "start": "node bot-advocacia.js"
     },
     "dependencies": {
       "@hapi/boom": "^10.0.1",
       "@whiskeysockets/baileys": "^6.7.1"
     }
   }
+  
   
