@@ -159,6 +159,13 @@ Entraremos em contato para confirmar a consulta.`
         } else if (connection === 'open') {
             console.log('✅ Bot conectado ao WhatsApp!');
         }
+        const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => res.send('Bot WhatsApp está rodando! 🚀'));
+app.listen(port, () => console.log(`Servidor HTTP escutando na porta ${port}`));
+
     });
 }
 
