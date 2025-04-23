@@ -60,18 +60,27 @@ Como podemos ajudar?
             }
 
             if (text === "1") {
-                state.step = 'agendar_nome';
+                state.step = 'agendar_nome'; 
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "📅 Vamos agendar sua consulta!\n\nQual é o seu *nome*?" });
                 return;
                 
             }
 
             if (text === "2") {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "⚖️ Aguardando... Em instantes um advogado falará com você!" });
                 return;
             }
 
             if (text === "3") {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, {
                     text: `📚 Serviços:
 - Direito Trabalhista
@@ -83,48 +92,73 @@ Como podemos ajudar?
             }
 
             if (text === "4") {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "📩 Digite sua mensagem e nossa equipe entrará em contato." });
                 return;
             }
 
             // Serviços específicos
             if (text.includes("trabalhista")) {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "🛠️ Direito Trabalhista:\nTratamos de questões como demissões, verbas rescisórias e outros direitos do trabalhador." });
                 return;
             }
 
             if (text.includes("família") || text.includes("familia")) {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "👨‍👩‍👧 Direito de Família:\nDivórcios, pensões, guarda de filhos e outros assuntos relacionados à família." });
                 return;
             }
 
             if (text.includes("civil")) {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "🏛️ Direito Civil:\nAssuntos como contratos, imóveis, indenizações e mais." });
                 return;
             }
 
             if (text.includes("inss")) {
+                await delay(3000); //delay de 3 segundos
+                await chat.sendStateTyping(); // Simulando Digitação
+                await delay(3000);
                 await sock.sendMessage(sender, { text: "📄 Ações contra o INSS:\nAposentadorias, auxílios e revisões de benefícios negados." });
                 return;
             }
-
+            await delay(3000); //delay de 3 segundos
+            await chat.sendStateTyping(); // Simulando Digitação
+            await delay(3000);
             await sock.sendMessage(sender, { text: "🤖 Obrigado pelo contato, retornaremos o mais breve possível." });
 
         } else if (state.step === 'agendar_nome') {
             state.agendamento.nome = text;
             state.step = 'agendar_telefone';
+            await delay(3000); //delay de 3 segundos
+            await chat.sendStateTyping(); // Simulando Digitação
+            await delay(3000);
             await sock.sendMessage(sender, { text: "📞 Agora informe seu *telefone* (com DDD):" });
 
         } else if (state.step === 'agendar_telefone') {
             state.agendamento.telefone = text;
             state.step = 'agendar_data';
+            await delay(3000); //delay de 3 segundos
+            await chat.sendStateTyping(); // Simulando Digitação
+            await delay(3000);
             await sock.sendMessage(sender, { text: "📆 Por fim, qual é a *melhor data e horário* para a consulta?" });
 
         } else if (state.step === 'agendar_data') {
             state.agendamento.horario = text;
 
             const { nome, telefone, horario } = state.agendamento;
-
+            await delay(3000); //delay de 3 segundos
+            await chat.sendStateTyping(); // Simulando Digitação
+            await delay(3000);
             await sock.sendMessage(sender, {
                 text: `✅ Obrigado, ${nome}!
 Recebemos seus dados:
@@ -136,6 +170,9 @@ Entraremos em contato para confirmar a consulta.`
             });
 
             // Salvando agendamento no arquivo
+            await delay(3000); //delay de 3 segundos
+            await chat.sendStateTyping(); // Simulando Digitação
+            await delay(3000);
             await salvarAgendamento({
                 nome,
                 telefone,
