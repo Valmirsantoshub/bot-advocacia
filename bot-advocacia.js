@@ -42,14 +42,30 @@ async function startBot() {
         const text = msg.message.conversation?.toLowerCase().trim() || msg.message.extendedTextMessage?.text?.toLowerCase().trim() || '';
 
         if (!sessionState[sender]) {
-            sessionState[sender] = { step: 'menu', agendamento: {} };
+            sessionState[sender] = { step: 'menu', agendamento: {}, pausado: false };
         }
+        
+        
 
         const state = sessionState[sender];
+        if (state.pausado) {
+            // Se o cliente quiser voltar ao bot automatizado
+            if (text === "voltar" || text === "menu") {
+                state.pausado = false;
+                state.step = 'menu';
+                await sock.sendMessage(sender, { text: "🤖 Atendimento automático reativado. Envie 'oi' para começar novamente." });
+            } else {
+                // Ignora as mensagens durante o atendimento humano
+                console.log(`🛑 Atendimento pausado com ${sender}`);
+            }
+            return;
+        }
+        
 
         if (state.step === 'menu') {
             if (/oi|ol[áa]|bom dia|boa tarde|in[íi]cio/.test(text)) {
                 const menu = `👋 Olá, bem-vindo ao escritório de advocacia!
+                
 
 Como podemos ajudar?
 
@@ -71,10 +87,12 @@ Como podemos ajudar?
             }
 
             if (text === "2") {
+                state.pausado = true;
                 await digitarAntesDeResponder(sock, sender);
-                await sock.sendMessage(sender, { text: "⚖️ Aguardando... Em instantes um advogado falará com você!" });
+                await sock.sendMessage(sender, { text: "⚖️ Encaminhando para um advogado...\nVocê será respondido em instantes por nossa equipe humana.\n\nDigite *voltar* ou *menu* se quiser retornar ao atendimento automático." });
                 return;
             }
+            
 
             if (text === "3") {
                 await digitarAntesDeResponder(sock, sender);
