@@ -46,7 +46,7 @@ async function startBot() {
         const state = sessionState[sender];
 
         if (state.step === 'menu') {
-            if (/\boi\b|\bol[áa]\b|\bbom dia\b|\bboa tarde\b|\bin[íi]cio\b/.test(text)) {
+            if (/\boi\b|\bolá|\bola|Ola|\b|Olá\b|\bbom dia\b|\bboa tarde\b|\bin[íi]cio\b/.test(text)) {
                 const menu = `👋 Olá, bem-vindo ao escritório de advocacia!
 
 Como podemos ajudar?
@@ -58,9 +58,6 @@ Como podemos ajudar?
                 await sock.sendMessage(sender, { text: menu });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text === "1") {
                 state.step = 'agendar_nome';
@@ -68,17 +65,11 @@ Como podemos ajudar?
                 return;
                 
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text === "2") {
                 await sock.sendMessage(sender, { text: "⚖️ Aguardando... Em instantes um advogado falará com você!" });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text === "3") {
                 await sock.sendMessage(sender, {
@@ -90,50 +81,32 @@ Como podemos ajudar?
                 });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text === "4") {
                 await sock.sendMessage(sender, { text: "📩 Digite sua mensagem e nossa equipe entrará em contato." });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             // Serviços específicos
             if (text.includes("trabalhista")) {
                 await sock.sendMessage(sender, { text: "🛠️ Direito Trabalhista:\nTratamos de questões como demissões, verbas rescisórias e outros direitos do trabalhador." });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text.includes("família") || text.includes("familia")) {
                 await sock.sendMessage(sender, { text: "👨‍👩‍👧 Direito de Família:\nDivórcios, pensões, guarda de filhos e outros assuntos relacionados à família." });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text.includes("civil")) {
                 await sock.sendMessage(sender, { text: "🏛️ Direito Civil:\nAssuntos como contratos, imóveis, indenizações e mais." });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             if (text.includes("inss")) {
                 await sock.sendMessage(sender, { text: "📄 Ações contra o INSS:\nAposentadorias, auxílios e revisões de benefícios negados." });
                 return;
             }
-            await delay(3000); //delay de 3 segundos
-        await chat.sendStateTyping(); // Simulando Digitação
-        await delay(3000);
 
             await sock.sendMessage(sender, { text: "🤖 Obrigado pelo contato, retornaremos o mais breve possível." });
 
