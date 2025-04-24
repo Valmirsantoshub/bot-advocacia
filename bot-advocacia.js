@@ -63,7 +63,7 @@ async function startBot() {
         
 
         if (state.step === 'menu') {
-            if (/oi|ol[áa]|bom dia|boa tarde|in[íi]cio/.test(text)) {
+            if (/oi|ol[áa]|bom dia|boa tarde|in[íi]cio| quem é?/.test(text)) {
                 const menu = `👋 Olá, bem-vindo ao escritório de advocacia!
                 
 
