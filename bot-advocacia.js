@@ -134,7 +134,7 @@ Como podemos ajudar?
             }
 
             await digitarAntesDeResponder(sock, sender);
-            await sock.sendMessage(sender, { text: "🤖 Obrigado pelo contato. Por favor, envie 'Oi' para recomeçar." });
+            await sock.sendMessage(sender, { text: "🤖 Obrigado pelo contato. Retornaremos om Mais Breve Possivel, aguarde!......" });
 
         } else if (state.step === 'agendar_nome') {
             state.agendamento.nome = text;
