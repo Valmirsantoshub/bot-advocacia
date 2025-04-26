@@ -17,7 +17,7 @@ async function salvarAgendamento(agendamento) {
 }
 
 // Função que simula digitação antes de enviar a mensagem
-async function digitarAntesDeResponder(sock, sender, tempo = 1000) {
+async function digitarAntesDeResponder(sock, sender, tempo = 3000) {
     await sock.sendPresenceUpdate('composing', sender);
     await new Promise(resolve => setTimeout(resolve, tempo));
     await sock.sendPresenceUpdate('paused', sender);
